@@ -1,25 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from 'react'
+import Navbar from './components/Navbar'
+import background from './img/bill.jpg'
+import { allbills } from './actions/billaction'
+import { customerList } from './actions/customeraction'
+import { allproducts } from './actions/productaction'
+// import { useDispatch } from 'react-redux'
 
-function App() {
+
+const App = () => {
+  const [loginstatus, setLoginstatus] = useState(false)
+  // const dispatch = useDispatch()
+  const togglestatus = () => {
+    setLoginstatus(!loginstatus)
+  }
+  // useEffect(() => {
+  //   dispatch(allbills)
+  //   dispatch(customerList)
+  //   dispatch(allproducts)
+
+  // }, [dispatch])
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+    <div>
+      <Navbar loginstatus={loginstatus} togglestatus={togglestatus} />
 
+
+    </div>
+  )
+}
 export default App;

@@ -1,24 +1,24 @@
 import React, { useState, useEffect } from 'react'
 import Navbar from './components/Navbar'
-import background from './img/bill.jpg'
 import { allbills } from './actions/billaction'
-import { customerList } from './actions/customeraction'
+import { customerAll } from './actions/customeraction'
 import { allproducts } from './actions/productaction'
-// import { useDispatch } from 'react-redux'
+import { useDispatch } from 'react-redux'
 
 
 const App = () => {
   const [loginstatus, setLoginstatus] = useState(false)
-  // const dispatch = useDispatch()
+  const dispatch = useDispatch()
   const togglestatus = () => {
     setLoginstatus(!loginstatus)
   }
-  // useEffect(() => {
-  //   dispatch(allbills)
-  //   dispatch(customerList)
-  //   dispatch(allproducts)
+  useEffect(() => {
+    dispatch(allbills())
+    dispatch(customerAll())
+    dispatch(allproducts())
 
-  // }, [dispatch])
+  }, [dispatch])
+
   return (
     <div>
       <Navbar loginstatus={loginstatus} togglestatus={togglestatus} />

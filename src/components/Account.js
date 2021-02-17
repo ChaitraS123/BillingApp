@@ -7,7 +7,7 @@ const Account = () => {
     useEffect(() => {
         axios.get('https://dct-billing-app.herokuapp.com/api/users/account', { 'headers': { 'Authorization': `Bearer ${localStorage.getItem('token')}` } })
             .then((response) => {
-                // console.log(response.data)
+
                 setUser(response.data)
             })
     }, [])
@@ -15,7 +15,7 @@ const Account = () => {
         <div className="card border-primary " style={{ width: '40%', left: '30%', marginTop: '50px' }}>
             <img className="card-img-top" className="img-rounded" style={{ width: '200px', margin: 'auto' }} src={`${image}`} alt="Card image cap"></img>
             <div className="card-body">
-                {/* <h4 style={{ textAlign: 'center' }}>my account details</h4><br /> */}
+
 
                 {Object.keys(user).length > 0 &&
                     <div>

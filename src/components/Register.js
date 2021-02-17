@@ -71,7 +71,7 @@ const Register = (props) => {
             const formdata = { username: username, email: email, password: password, businessName: businessName, address: address }
             const handleRedirect = () => {
                 props.history.push('/login')
-                swal('congragulations!!u have successfully registered')
+                // swal('congragulations!!u have successfully registered')
             }
 
             dispatch(startRegisterUsers(formdata, handleRedirect))

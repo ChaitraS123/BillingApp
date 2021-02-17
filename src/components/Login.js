@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux'
 import { startloginUsers } from '../actions/Users'
 import validator from 'validator'
 import swal from 'sweetalert'
-// import togglestate from '../actions/togglestate'
+
 
 const Login = (props) => {
     const { togglestatus } = props
@@ -12,8 +12,6 @@ const Login = (props) => {
     const [formError, setFormError] = useState({})
     const errors = {}
     const dispatch = useDispatch()
-    // const loginstatus = useSelector((state) => state.userloginstatus)
-    // console.log("loginstatus", loginstatus)
     const handleEmailChange = (e) => {
         setEmail(e.target.value)
     }
@@ -53,6 +51,8 @@ const Login = (props) => {
         else {
             setFormError(errors)
             console.log(errors)
+            setEmail('')
+            setPassword('')
         }
 
     }

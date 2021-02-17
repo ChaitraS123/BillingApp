@@ -5,7 +5,6 @@ import ProductList from './ProductList'
 
 const Product = () => {
     const products = useSelector((state) => state.products)
-    console.log("products", products)
 
 
     return (

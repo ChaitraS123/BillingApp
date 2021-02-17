@@ -1,20 +1,21 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link, Route } from 'react-router-dom'
-import background from '../img/bill.jpg'
-
+import { useDispatch } from 'react-redux'
 import Register from './Register'
 import Login from './Login'
 import Home from './Home'
 import Account from './Account'
-import Customer from './Customer'
-import Product from './Product'
-import AddBill from './AddBill'
+import Customer from './Customers/Customer'
+import Product from './Products/Product'
+import AddBill from './Bills/AddBill'
 import DashBoard from './DashBoard'
 import Allbills from './Allbills'
 import './navbar.css'
 
 const Navbar = (props) => {
     const { loginstatus, togglestatus } = props
+
+    const dispatch = useDispatch();
 
     const logout = () => {
         const confirm = window.confirm("are u sure")
@@ -31,14 +32,13 @@ const Navbar = (props) => {
                 <ul>
                     <li><Link to="/">Home</Link>{'/'}</li>
                     <li><Link to="/dashboard">Dashboard</Link>{'/'}</li>
-                    {/* <li><Link to="/account">Account</Link>{'/'}</li> */}
+
                     <li> <Link to="/customer">Customer</Link>{'/'}</li>
                     <li> <Link to="/product">Products</Link>{'/'}</li>
-                    <li> <Link to="/addbill">Bills</Link>{'/'}</li>
-                    <li> <Link to="/allbill">All Bills</Link></li>
+                    <li> <Link to="/addbill">Add Bill</Link>{'/'}</li>
+                    <li> <Link to="/allbill">All Bills</Link>{'/'}</li>
                     <li><Link to="/account">Account</Link>{'/'}</li>
-
-                    <button onClick={logout}>logout</button>
+                    <li><Link onClick={logout}>Logout</Link></li>
                 </ul>
                 <Route path="/account" component={Account} />
                 <Route path="/customer" component={Customer} />

@@ -1,7 +1,6 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
-import { deleteproduct } from '../actions/productaction'
-import { viewProducts } from '../actions/productaction'
+import { deleteproduct } from '../../actions/productaction'
 import { FaShoppingCart } from 'react-icons/fa'
 import { RiDeleteBin3Fill } from 'react-icons/ri'
 
@@ -17,9 +16,7 @@ const ProductItem = (props) => {
 
     }
 
-    const viewproduct = (id) => {
-        dispatch(viewProducts(id))
-    }
+
     return (
         <div>
 
@@ -30,7 +27,7 @@ const ProductItem = (props) => {
                         <h6>Name-{name}</h6>
                         <p>price-{price}rs</p>
                         <button className="btn btn-danger" onClick={() => { removeproduct(id) }}><RiDeleteBin3Fill /></button>
-                        <button onClick={() => { viewproduct(id) }}>view </button>
+
                     </div>
                 </div>
             </div>

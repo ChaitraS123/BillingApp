@@ -5,7 +5,7 @@ const addProduct = (product) => {
 }
 
 export const addproduct = (product) => {
-    console.log(product)
+
     return (dispatch) => {
         axios.post('http://dct-billing-app.herokuapp.com/api/products', product, { headers: { Authorization: `Bearer ${localStorage.getItem('token')}` } }).
             then((response) => {
@@ -14,7 +14,7 @@ export const addproduct = (product) => {
                     alert(result.message)
                 }
                 else {
-                    alert("product has been successfully added")
+                    swal("product has been successfully added")
                     dispatch(addProduct(result))
                 }
             })
@@ -38,72 +38,25 @@ export const allproducts = () => {
             })
     }
 }
-// export const getproduct = (id) => {
-//     return (dispatch) => {
-//         axios.get('http://dct-billing-app.herokuapp.com/api/products/:id', { headers: { Authorization: `Bearer ${localStorage.getItem('token')}` } }).
-//             then((response) => {
-//                 const result = response.data
-//                 if (result.hasOwnProperty("errors")) {
-//                     alert(result.message)
-//                 }
-//                 else {
-//                     dispatch(getProducts(result))
-//                 }
-//             })
-//     }
-// }
-const deleteProducts = (id) => {
-    return { type: 'REMOVE_PRODUCT', payload: id }
+
+const deleteProducts = (i) => {
+    return { type: 'REMOVE_PRODUCT', payload: i }
 }
 
 export const deleteproduct = (id) => {
-    // console.log(id)
+
     return (dispatch) => {
         axios.get(`http://dct-billing-app.herokuapp.com/api/products/${id}`, { headers: { Authorization: `Bearer ${localStorage.getItem('token')}` } }).
             then((response) => {
                 const result = response.data
-                // console.log(result)
+
                 if (result.hasOwnProperty("errors")) {
                     alert(result.message)
                 }
                 else {
+
                     dispatch(deleteProducts(result._id))
-                }
-            })
-    }
-
-}
-
-const updateProducts = (product) => {
-    return { type: 'UPDATE_PRODUCTS', payload: product }
-}
-export const updateproducts = () => {
-    return (dispatch) => {
-        axios.get('http://dct-billing-app.herokuapp.com/api/products/:id', { headers: { Authorization: `Bearer ${localStorage.getItem('token')}` } }).
-            then((response) => {
-                const result = response.data
-                if (result.hasOwnProperty("errors")) {
-                    alert(result.message)
-                }
-                else {
-                    dispatch(updateProducts(result))
-                }
-            })
-    }
-}
-
-export const viewProducts = (id) => {
-    return (dispatch) => {
-        axios.get(`http://dct-billing-app.herokuapp.com/api/products/${id}`, { headers: { Authorization: `Bearer ${localStorage.getItem('token')}` } }).
-            then((response) => {
-                const result = response.data
-                if (result.hasOwnProperty("errors")) {
-                    alert(result.message)
-                }
-                else {
-                    swal(`Product name-${result.name}\n Product price-${result.price}`)
-
-                    // console.log(result)
+                    swal('product has been successfully deleted')
                 }
             })
     }

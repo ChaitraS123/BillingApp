@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import CustomerItem from './CustomerItem'
-import { customerList } from '../actions/customeraction'
+import { customerAll } from '../../actions/customeraction'
 
 
 const CustomerList = () => {
@@ -9,11 +9,8 @@ const CustomerList = () => {
     const dispatch = useDispatch()
 
     useEffect(() => {
-        dispatch(customerList())
-
+        dispatch(customerAll())
     }, [dispatch])
-
-
 
     return (
         <div>

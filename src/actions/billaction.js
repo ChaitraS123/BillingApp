@@ -1,4 +1,5 @@
 import axios from 'axios'
+import swal from 'sweetalert'
 
 const allBills = (bill) => {
     return { type: 'ALL_BILLS', payload: bill }
@@ -33,15 +34,15 @@ export const addBill = (bill, handletoggle) => {
                     alert(result.message)
                 }
                 else {
-                    alert("added successfully")
+                    swal("added successfully")
                     dispatch(addbill(result))
                     console.log(result)
                     localStorage.setItem('billid', result._id)
-                    localStorage.setItem("userrid", result.user)
+
                     handletoggle()
 
 
-                    // billhandletoggle()
+
 
                 }
             })
@@ -66,25 +67,5 @@ export const deleteBill = (id) => {
             })
     }
 }
-const currentbill = (id) => {
-    return { type: 'GET_BILL', payload: id }
 
-}
-export const getbill = (id) => {
-    console.log("id in get bill", id)
-    return (dispatch) => {
-        axios.get(`http://dct-billing-app.herokuapp.com/api/bills/${id}`, { headers: { Authorization: `Bearer ${localStorage.getItem('token')}` } })
-            .then((response) => {
-                const result = response.data
-                if (result.hasOwnProperty("errors")) {
-                    alert(result.message)
-                }
-                else {
 
-                    dispatch(currentbill(result._id))
-                }
-
-            })
-    }
-
-}

@@ -4,23 +4,16 @@ import axios from 'axios'
 import Pdf from 'react-to-pdf'
 
 const ref = React.createRef()
-
 const Currentbill = (props) => {
     const customers = useSelector((state => state.customers))
     const products = useSelector((state) => state.products)
-
-
-
     const { handletoggle } = props
-
     const [billid, setBillid] = useState('')
-
     const [billdata, setBilldata] = useState({})
-
     const [user, setUser] = useState({})
     useEffect(() => {
         const res = localStorage.getItem('billid')
-        console.log("in useEffect", billid)
+
 
         setBillid(res)
     }, [billid])
@@ -28,7 +21,7 @@ const Currentbill = (props) => {
     useEffect(() => {
         axios.get(`http://dct-billing-app.herokuapp.com/api/bills/${billid}`, { headers: { Authorization: `Bearer ${localStorage.getItem('token')}` } })
             .then((response) => {
-                console.log("bill data", response.data)
+
                 setBilldata(response.data)
             })
 
@@ -36,7 +29,7 @@ const Currentbill = (props) => {
     useEffect(() => {
         axios.get('http://dct-billing-app.herokuapp.com/api/users/account', { headers: { Authorization: `Bearer ${localStorage.getItem('token')}` } })
             .then((response) => {
-                console.log("user account", response.data)
+
                 setUser(response.data)
             })
     }, [])
@@ -60,7 +53,7 @@ const Currentbill = (props) => {
     }
     return (
         <div>
-            {/* <h2>hii this is currentbill</h2> */}
+
             <div style={{ width: 500, height: 500 }} ref={ref}>
                 <h3 style={{ textAlign: ' center ', backgroundColor: 'gray' }}>INVOICE</h3>
                 {user.businessName && <h4>{user.businessName.toUpperCase()}</h4>}
@@ -97,7 +90,7 @@ const Currentbill = (props) => {
                 <h6>Thank you for shopping with us</h6>
 
                 <h4>Regards</h4>
-                {user.businessName && <p>{user.businessName}</p>}
+                {user.businessName && <p>{user.businessName.toUpperCase()}</p>}
             </div>
             <Pdf targetRef={ref} filename="invoice.pdf">
                 {({ toPdf }) => (

@@ -1,19 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
-// import {startRegisterUsers} from './actions/Users'
-// import {useDipatch} from 'react-redux'
 import configureStore from './store/configureStore'
 import { Provider } from 'react-redux'
 import App from './App';
 import 'bootstrap/dist/css/bootstrap.css'
 const store = configureStore();
-// console.log(store.getState())
 store.subscribe(() => {
   console.log("store", store.getState())
 })
-
-
 const ele = (
   <Provider store={store}>
     <BrowserRouter>

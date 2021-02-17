@@ -1,10 +1,8 @@
 const initialcustomerstate = [];
 const customerReducer = (state = initialcustomerstate, action) => {
     switch (action.type) {
-
-        case 'ALL_CUSTOMERS': {
+        case 'ALL_CUSTOMER': {
             return [...action.payload]
-
         }
         case 'ADD_CUSTOMER': {
             return [...state, action.payload]
@@ -14,6 +12,7 @@ const customerReducer = (state = initialcustomerstate, action) => {
                 return customer._id !== action.payload
             })
         }
+
         default: {
             return [...state]
         }

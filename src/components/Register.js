@@ -14,10 +14,7 @@ const Register = (props) => {
     const [formError, setFormError] = useState({})
     const errors = {}
     const dispatch = useDispatch()
-    // const handlenameChange = (e) => {
-    //     console.log(e.target.value)
-    //     setName(e.target.value)
-    // }
+    
     const runValidations = () => {
         if (username.length === 0) {
             errors.name = "name cannot be blank"
@@ -64,14 +61,13 @@ const Register = (props) => {
     const handleSubmit = (e) => {
         e.preventDefault();
         runValidations()
-        // const data = { username: name, email: email, password: password, bussiness: bussiness, address: address }
-
+      
         if (Object.keys(errors).length === 0) {
             setFormError({})
             const formdata = { username: username, email: email, password: password, businessName: businessName, address: address }
             const handleRedirect = () => {
                 props.history.push('/login')
-                // swal('congragulations!!u have successfully registered')
+               
             }
 
             dispatch(startRegisterUsers(formdata, handleRedirect))

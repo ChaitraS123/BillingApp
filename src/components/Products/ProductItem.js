@@ -1,7 +1,6 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
 import { deleteproduct } from '../../actions/productaction'
-import { FaShoppingCart } from 'react-icons/fa'
 import { RiDeleteBin3Fill } from 'react-icons/ri'
 
 const ProductItem = (props) => {
@@ -23,7 +22,7 @@ const ProductItem = (props) => {
             <div className="card" style={{ width: '300px' }}>
                 <div className="card-body">
                     <div className="jumbotron">
-                        <h6><FaShoppingCart /></h6>
+
                         <h6>Name-{name}</h6>
                         <p>price-{price}rs</p>
                         <button className="btn btn-danger" onClick={() => { removeproduct(id) }}><RiDeleteBin3Fill /></button>
